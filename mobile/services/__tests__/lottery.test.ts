@@ -23,13 +23,13 @@ describe('lottery service', () => {
       status: 'running',
     };
 
-    global.fetch = jest.fn().mockResolvedValue({
+    globalThis.fetch = jest.fn().mockResolvedValue({
       json: async () => responseBody,
     } as Response);
 
     const result = await createNewLottery({ name: 'Super Lotto', prize: '1000' });
 
-    expect(global.fetch).toHaveBeenCalledWith(
+    expect(globalThis.fetch).toHaveBeenCalledWith(
       expect.stringMatching(/\/lotteries$/),
       expect.objectContaining({
         method: 'POST',
@@ -49,20 +49,20 @@ describe('lottery service', () => {
       },
     ];
 
-    global.fetch = jest.fn().mockResolvedValue({
+    globalThis.fetch = jest.fn().mockResolvedValue({
       json: async () => lotteries,
     } as Response);
 
     const result = await getLottieries();
 
-    expect(global.fetch).toHaveBeenCalledWith(
+    expect(globalThis.fetch).toHaveBeenCalledWith(
       expect.stringMatching(/\/lotteries$/),
     );
     expect(result).toEqual(lotteries);
   });
 
   it('throws when registerToLottery receives non-ok response', async () => {
-    global.fetch = jest.fn().mockResolvedValue({
+    globalThis.fetch = jest.fn().mockResolvedValue({
       ok: false,
       statusText: 'Bad Request',
     } as Response);

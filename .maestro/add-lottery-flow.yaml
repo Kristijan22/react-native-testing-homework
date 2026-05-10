@@ -1,0 +1,39 @@
+appId: host.exp.Exponent
+---
+- launchApp
+- runFlow:
+    when:
+      visible: "my-app"
+    commands:
+      - tapOn: "my-app"
+- runFlow:
+    when:
+      visible: "Continue"
+    commands:
+      - waitForAnimationToEnd
+      - tapOn:
+          point: "50%,15%"
+- extendedWaitUntil:
+    visible:
+      id: "home-add-lottery-fab"
+- tapOn:
+    id: "home-add-lottery-fab"
+- extendedWaitUntil:
+    visible:
+      id: "add-lottery-name-input"
+- tapOn:
+    id: "add-lottery-name-input"
+- inputText: "Maestro Lottery"
+- tapOn:
+    id: "add-lottery-prize-input"
+- inputText: "5000 EUR"
+- tapOn:
+    id: "add-lottery-submit-button"
+- extendedWaitUntil:
+    notVisible:
+      id: "add-lottery-name-input"
+- extendedWaitUntil:
+    visible:
+      id: "home-add-lottery-fab"
+- assertVisible: "Maestro Lottery"
+- assertVisible: "5000 EUR"

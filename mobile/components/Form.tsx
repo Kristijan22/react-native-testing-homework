@@ -57,6 +57,7 @@ const LotteryForm = ({ onSubmit, onNavigateBack }: Props) => {
       <Text style={styles.title}>Add new lottery</Text>
       <TextInput
         accessibilityLabel="Text input field"
+        testID="add-lottery-name-input"
         style={styles.input}
         placeholder="Lottery Name"
         value={formik.values.name}
@@ -66,6 +67,7 @@ const LotteryForm = ({ onSubmit, onNavigateBack }: Props) => {
       {nameError && <Text style={styles.error}>{formik.errors.name}</Text>}
       <TextInput
         accessibilityLabel="Text input field"
+        testID="add-lottery-prize-input"
         style={styles.input}
         placeholder="Lottery Prize"
         value={formik.values.prize}
@@ -75,6 +77,7 @@ const LotteryForm = ({ onSubmit, onNavigateBack }: Props) => {
       {prizeError && <Text style={styles.error}>{formik.errors.prize}</Text>}
       <Pressable
         accessibilityRole="button"
+        testID="add-lottery-submit-button"
         style={[styles.button, { backgroundColor }]}
         onPress={() => formik.handleSubmit()}
         disabled={!formik.isValid}

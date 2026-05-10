@@ -1,5 +1,10 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import {
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+} from 'react-native';
 import { useToast } from 'react-native-toast-notifications';
 import { useNavigation } from '@react-navigation/native';
 import Form from '../components/Form';
@@ -19,9 +24,17 @@ const AddLottery = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Form onSubmit={onSubmit} onNavigateBack={onNavigateBack} />
-    </View>
+    <KeyboardAvoidingView
+      behavior={Platform.select({ ios: 'padding', default: 'height' })}
+      style={styles.container}
+    >
+      <ScrollView
+        contentContainerStyle={styles.content}
+        keyboardShouldPersistTaps="handled"
+      >
+        <Form onSubmit={onSubmit} onNavigateBack={onNavigateBack} />
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -31,6 +44,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.secondary,
+  },
+  content: {
+    flexGrow: 1,
     justifyContent: 'center',
+    paddingVertical: 24,
   },
 });

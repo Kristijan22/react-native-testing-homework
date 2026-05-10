@@ -11,6 +11,7 @@ const FAB = ({ onPress }: Props) => {
   return (
     <TouchableOpacity
       accessibilityRole="button"
+      testID="home-add-lottery-fab"
       style={styles.container}
       onPress={onPress}
     >

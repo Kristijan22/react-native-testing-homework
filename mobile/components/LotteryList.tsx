@@ -63,6 +63,7 @@ const LotteryList = ({
     const registered = registeredLotteries?.includes(item.id);
     return (
       <Pressable
+        accessibilityLabel={`${item.name}, ${item.prize}`}
         accessibilityRole="button"
         testID={`lottery-item-${item.id}`}
         style={[
@@ -83,8 +84,20 @@ const LotteryList = ({
             <MaterialIcons name="done" size={24} color="black" />
           )}
         </View>
-        <Text style={styles.name}>{item.name}</Text>
-        <Text style={styles.prize}>{item.prize}</Text>
+        <Text
+          accessibilityLabel={item.name}
+          testID="lottery-item-name"
+          style={styles.name}
+        >
+          {item.name}
+        </Text>
+        <Text
+          accessibilityLabel={item.prize}
+          testID="lottery-item-prize"
+          style={styles.prize}
+        >
+          {item.prize}
+        </Text>
         <Text style={styles.id}>{item.id}</Text>
       </Pressable>
     );

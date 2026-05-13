@@ -51,6 +51,7 @@ const RegisterModal = () => {
       <Text style={styles.title}>Register to lotteries</Text>
       <TextInput
         accessibilityLabel="Text input field"
+        testID="register-name-input"
         placeholder="Enter your name"
         onChangeText={formik.handleChange('name')}
         onBlur={formik.handleBlur('name')}
@@ -62,6 +63,7 @@ const RegisterModal = () => {
       ) : null}
       <Pressable
         accessibilityRole="button"
+        testID="register-submit-button"
         style={[styles.button, { backgroundColor }]}
         onPress={() => formik.handleSubmit()}
         disabled={!formik.isValid}

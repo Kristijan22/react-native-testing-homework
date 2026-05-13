@@ -64,6 +64,7 @@ const LotteryList = ({
     return (
       <Pressable
         accessibilityRole="button"
+        testID={`lottery-item-${item.id}`}
         style={[
           styles.container,
           {

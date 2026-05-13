@@ -46,6 +46,7 @@ const Home = () => {
     <View style={styles.container}>
       <TouchableOpacity
         accessibilityRole="button"
+        testID="home-register-button"
         onPress={() => navigation.navigate('Register', { selectedLotteries })}
         style={[styles.button, { backgroundColor }]}
         disabled={selectedLotteries.length === 0}
